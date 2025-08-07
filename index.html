@@ -1,67 +1,139 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Зимняя тема</title>
-<style>
-  /* Фон с зимним изображением, размытие */
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NestorOS — Зимняя тема</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Segoe UI", sans-serif;
+      background: #fff;
+      overflow: hidden;
+    }
 
-  .background {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('nestoros.jpg'); /* зимнее фото, можно заменить */
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: -2;
-  }
+    /* Фон и размытие */
+    .background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('nestoros.jpg'); /* заменить на зимнее фото */
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      z-index: -2;
+    }
 
-  .gradient-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.71) 0%, /* белый с прозрачностью 0.71 сверху */
-      rgba(255, 255, 255, 0) 100%    /* полностью прозрачный снизу */
-    );
-    z-index: -1;
-  }
+    .gradient-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.71) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      z-index: -1;
+    }
 
-  .content {
-    position: relative;
-    color: #333;
-    padding: 40px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
+    /* Окно как в OS */
+    .window {
+      width: 600px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 1px solid #ccc;
+    }
 
-  h1 {
-    margin-bottom: 0.5em;
-  }
+    .titlebar {
+      background: #e0e0e0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
 
-  p {
-    font-size: 1.2em;
-    line-height: 1.5em;
-  }
-</style>
+    .titlebar .title {
+      font-weight: bold;
+    }
+
+    .titlebar .buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #888;
+      display: inline-block;
+    }
+
+    .btn.close { background: #e74c3c; }
+    .btn.min { background: #f1c40f; }
+    .btn.max { background: #2ecc71; }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      border-top: 1px solid #ccc;
+    }
+
+    .taskbar span {
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
 
 <div class="background"></div>
 <div class="gradient-overlay"></div>
 
-<div class="content">
-  <h1>Зимняя тема</h1>
-  <p>Добро пожаловать на зимнюю страницу с красивым размытым фоном и плавным градиентом.</p>
+<div class="window">
+  <div class="titlebar">
+    <div class="title">Окно системы</div>
+    <div class="buttons">
+      <span class="btn close"></span>
+      <span class="btn min"></span>
+      <span class="btn max"></span>
+    </div>
+  </div>
+  <div class="content">
+    <h1>NestorOS 7</h1>
+    <p>Добро пожаловать в зимнюю версию системы NestorOS. Наслаждайтесь стилем, лёгкостью и скоростью.</p>
+  </div>
+</div>
+
+<div class="taskbar">
+  <span>🧊 NestorOS • Зимняя сборка</span>
 </div>
 
 </body>
