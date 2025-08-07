@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Зимняя тема</title>
+<style>
+  /* Фон с зимним изображением, размытие */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  .background {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1470&q=80'); /* зимнее фото, можно заменить */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -2;
+  }
+
+  .gradient-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.71) 0%, /* белый с прозрачностью 0.71 сверху */
+      rgba(255, 255, 255, 0) 100%    /* полностью прозрачный снизу */
+    );
+    z-index: -1;
+  }
+
+  .content {
+    position: relative;
+    color: #333;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="gradient-overlay"></div>
+
+<div class="content">
+  <h1>Зимняя тема</h1>
+  <p>Добро пожаловать на зимнюю страницу с красивым размытым фоном и плавным градиентом.</p>
+</div>
+
+</body>
+</html>
