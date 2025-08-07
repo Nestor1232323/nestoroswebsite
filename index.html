@@ -1,140 +1,163 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NestorOS — Зимняя тема</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: "Segoe UI", sans-serif;
-      background: #fff;
-      overflow: hidden;
-    }
-
-    /* Фон и размытие */
-    .background {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('nestoros.jpg'); /* заменить на зимнее фото */
-      background-size: cover;
-      background-position: center;
-      filter: blur(8px);
-      z-index: -2;
-    }
-
-    .gradient-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.71) 0%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      z-index: -1;
-    }
-
-    /* Окно как в OS */
-    .window {
-      width: 600px;
-      margin: 80px auto;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      border: 1px solid #ccc;
-    }
-
-    .titlebar {
-      background: #e0e0e0;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .titlebar .title {
-      font-weight: bold;
-    }
-
-    .titlebar .buttons {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #888;
-      display: inline-block;
-    }
-
-    .btn.close { background: #e74c3c; }
-    .btn.min { background: #f1c40f; }
-    .btn.max { background: #2ecc71; }
-
-    .content {
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .taskbar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-      border-top: 1px solid #ccc;
-    }
-
-    .taskbar span {
-      font-size: 14px;
-      color: #444;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NestorOS - Следующее поколение операционных систем</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Установка шрифта Century Gothic, с запасными вариантами */
+        body {
+            font-family: 'Century Gothic', CenturyGothic, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .hero-section {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg/960px-%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg?20190503150407');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 100vh;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dock-container {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .dock-icon {
+            transition: transform 0.2s ease-in-out;
+        }
+        .dock-icon:hover {
+            transform: scale(1.2);
+        }
+        /* Анимация плавного появления */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-<div class="background"></div>
-<div class="gradient-overlay"></div>
+    <!-- Навигационная панель в стиле Apple -->
+    <nav class="fixed top-0 w-full z-30 p-4 bg-transparent backdrop-filter backdrop-blur-sm">
+        <div class="container mx-auto flex justify-between items-center text-white">
+            <a href="#" class="text-xl font-bold">NestorOS</a>
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#" class="hover:text-gray-300 transition-colors">Особенности</a>
+                <a href="#" class="hover:text-gray-300 transition-colors">Обзор</a>
+                <a href="#" class="hover:text-gray-300 transition-colors">Контакты</a>
+                <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-colors">Скачать</a>
+            </div>
+        </div>
+    </nav>
 
-<div class="window">
-  <div class="titlebar">
-    <div class="title">Окно системы</div>
-    <div class="buttons">
-      <span class="btn close"></span>
-      <span class="btn min"></span>
-      <span class="btn max"></span>
-    </div>
-  </div>
-  <div class="content">
-    <h1>NestorOS 7</h1>
-    <p>Добро пожаловать в зимнюю версию системы NestorOS. Наслаждайтесь стилем, лёгкостью и скоростью.</p>
-  </div>
-</div>
+    <!-- Секция главного экрана, имитирующая скриншот -->
+    <header class="hero-section flex items-center justify-center text-center text-white">
+        <div class="hero-overlay"></div>
+        <div class="relative z-10 p-8 fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">NestorOS</h1>
+            <p class="text-xl md:text-2xl mb-8 drop-shadow-lg max-w-2xl mx-auto">
+                Интуитивно понятная, мощная и элегантная. NestorOS создана для того, чтобы ваш рабочий процесс был максимально комфортным.
+            </p>
+        </div>
+        
+        <!-- Док-панель внизу -->
+        <div class="dock-container fixed bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full flex gap-4 shadow-xl z-20">
+            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <path d="M12 21V3"></path>
+                </svg>
+            </div>
+            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M16 16l-4-4-4 4"></path>
+                    <path d="M12 8v4"></path>
+                </svg>
+            </div>
+            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+            </div>
+            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                    <line x1="4" y1="22" x2="4" y2="15"></line>
+                </svg>
+            </div>
+            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M15 9l-6 6"></path>
+                    <path d="M9 9l6 6"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
 
-<div class="taskbar">
-  <span>🧊 NestorOS • Зимняя сборка</span>
-</div>
+    <!-- Секция с функциями -->
+    <section class="py-20 text-center">
+        <h2 class="text-4xl font-bold mb-12 fade-in">Ключевые особенности NestorOS</h2>
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <!-- Карточка 1 -->
+            <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.2s;">
+                <h3 class="text-2xl font-semibold mb-4">Интуитивный интерфейс</h3>
+                <p>
+                    NestorOS предлагает минималистичный и легко настраиваемый интерфейс, который делает работу с системой приятной и эффективной.
+                </p>
+            </div>
+            <!-- Карточка 2 -->
+            <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.4s;">
+                <h3 class="text-2xl font-semibold mb-4">Высокая производительность</h3>
+                <p>
+                    Оптимизированный код и современная архитектура обеспечивают мгновенный отклик и стабильную работу даже с ресурсоёмкими приложениями.
+                </p>
+            </div>
+            <!-- Карточка 3 -->
+            <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.6s;">
+                <h3 class="text-2xl font-semibold mb-4">Безопасность</h3>
+                <p>
+                    Встроенные средства защиты и регулярные обновления гарантируют, что ваши данные всегда будут в безопасности.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция с цитатой или дополнительной информацией -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <blockquote class="text-3xl italic font-light max-w-3xl mx-auto mb-4 fade-in" style="animation-delay: 0.8s;">
+                "NestorOS — это не просто операционная система, это новый взгляд на взаимодействие с компьютером."
+            </blockquote>
+            <p class="text-xl font-semibold fade-in" style="animation-delay: 1s;">— Стивен Н., разработчик</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="py-12 text-center text-gray-400">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 NestorOS. Все права защищены.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
