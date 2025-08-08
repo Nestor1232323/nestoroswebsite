@@ -9,42 +9,38 @@
         /* Установка шрифта Century Gothic, с запасными вариантами */
         body {
             font-family: 'Century Gothic', CenturyGothic, sans-serif;
+            color: #e2e8f0; /* Основной текст остается светлым */
+            background-color: #0f172a;
+            /* Фон теперь применяется ко всему телу документа */
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg/960px-%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg?20190503150407');
             background-size: cover;
+            background-attachment: fixed; /* Фиксированный фон для эффекта параллакса */
             background-position: center;
+        }
+        .hero-section {
             position: relative;
             height: 100vh;
         }
-        .hero-section {
-                        position: relative;
-            height: 100vh;
-                        backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
         .hero-overlay {
-            background: rgba(0, 0, 0, 0.4);
+            /* Добавлен градиент и размытие */
+            backdrop-filter: blur(20px);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.71) 0%, rgba(255, 255, 255, 0) 100%);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.15); /* Светлый полупрозрачный фон для читаемости */
+            color: #e2e8f0; /* Текст теперь светлый */
+        }
         .card {
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .dock-container {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .dock-icon {
-            transition: transform 0.2s ease-in-out;
-        }
-        .dock-icon:hover {
-            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.3); /* Более светлые карточки */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Добавляем тень для лучшей читаемости */
+
         }
         /* Анимация плавного появления */
         .fade-in {
@@ -73,6 +69,7 @@
 
     <!-- Секция главного экрана, имитирующая скриншот -->
     <header class="hero-section flex items-center justify-center text-center text-white">
+        <!-- Добавляем оверлей с блюром, чтобы текст был читаемым -->
         <div class="hero-overlay"></div>
         <div class="relative z-10 p-8 fade-in">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">NestorOS</h1>
@@ -80,45 +77,10 @@
                 Интуитивно понятная, мощная и элегантная. NestorOS создана для того, чтобы ваш рабочий процесс был максимально комфортным.
             </p>
         </div>
-        
-        <!-- Док-панель внизу -->
-        <div class="dock-container fixed bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full flex gap-4 shadow-xl z-20">
-            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <path d="M12 21V3"></path>
-                </svg>
-            </div>
-            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M16 16l-4-4-4 4"></path>
-                    <path d="M12 8v4"></path>
-                </svg>
-            </div>
-            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-            </div>
-            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                    <line x1="4" y1="22" x2="4" y2="15"></line>
-                </svg>
-            </div>
-            <div class="dock-icon w-12 h-12 flex items-center justify-center bg-white bg-opacity-20 rounded-full cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M15 9l-6 6"></path>
-                    <path d="M9 9l6 6"></path>
-                </svg>
-            </div>
-        </div>
     </header>
 
     <!-- Секция с функциями -->
-    <section class="py-20 text-center">
+    <section class="py-20 text-center content-section">
         <h2 class="text-4xl font-bold mb-12 fade-in">Ключевые особенности NestorOS</h2>
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
             <!-- Карточка 1 -->
@@ -137,7 +99,7 @@
             </div>
             <!-- Карточка 3 -->
             <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.6s;">
-                <h3 class="text-2xl font-semibold mb-4">Безопасность</h3>
+                <h3 class="text-2xl font-semibold mb-4">Надежность</h3>
                 <p>
                     Встроенные средства защиты и регулярные обновления гарантируют, что ваши данные всегда будут в безопасности.
                 </p>
@@ -146,7 +108,7 @@
     </section>
 
     <!-- Секция с цитатой или дополнительной информацией -->
-    <section class="py-20 bg-gray-900">
+    <section class="py-20 content-section">
         <div class="container mx-auto px-6 text-center">
             <blockquote class="text-3xl italic font-light max-w-3xl mx-auto mb-4 fade-in" style="animation-delay: 0.8s;">
                 "NestorOS — это не просто операционная система, это новый взгляд на взаимодействие с компьютером."
@@ -156,7 +118,7 @@
     </section>
 
     <!-- Футер -->
-    <footer class="py-12 text-center text-gray-400">
+    <footer class="py-12 text-center content-section">
         <div class="container mx-auto px-6">
             <p>&copy; 2025 NestorOS. Все права защищены.</p>
         </div>
