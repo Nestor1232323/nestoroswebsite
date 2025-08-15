@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NestorOS - Следующее поколение операционных систем</title>
+    <title>NestorOS - Следующее поколение ОС</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Установка шрифта Century Gothic, с запасными вариантами */
         body {
             font-family: 'Century Gothic', CenturyGothic, sans-serif;
-            color: #e2e8f0; /* Основной текст остается светлым */
+            color: #e2e8f0;
             background-color: #0f172a;
-            /* Фон теперь применяется ко всему телу документа */
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg/960px-%D0%97%D0%B0%D1%85%D1%96%D0%B4_%D0%A1%D0%BE%D0%BD%D1%86%D1%8F_%D0%BD%D0%B0%D0%B4_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%BC%2C_%D0%B2%D0%B8%D0%B4_%D0%B7_%D0%BF%D0%BE%D0%BB%D0%BE%D0%BD%D0%B8%D0%BD%D0%B8_%D0%9A%D1%83%D0%BA%D1%83%D0%BB.jpg?20190503150407');
             background-size: cover;
-            background-attachment: fixed; /* Фиксированный фон для эффекта параллакса */
+            background-attachment: fixed;
             background-position: center;
         }
         .hero-section {
@@ -22,9 +20,8 @@
             height: 100vh;
         }
         .hero-overlay {
-            /* Добавлен градиент и размытие */
-            backdrop-filter: blur(20px);
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.71) 0%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(15px);
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(15,23,42,0.7) 100%);
             position: absolute;
             top: 0;
             left: 0;
@@ -32,17 +29,15 @@
             height: 100%;
         }
         .content-section {
-            background-color: rgba(255, 255, 255, 0.15); /* Светлый полупрозрачный фон для читаемости */
-            color: #e2e8f0; /* Текст теперь светлый */
+            background-color: rgba(15,23,42,0.7);
+            color: #e2e8f0;
         }
         .card {
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.3); /* Более светлые карточки */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Добавляем тень для лучшей читаемости */
-
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
-        /* Анимация плавного появления */
         .fade-in {
             animation: fadeIn 1s ease-out forwards;
         }
@@ -50,68 +45,64 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        h1, h2, h3 {
+            text-shadow: 0 0 8px #a3bffa;
+        }
+        a {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Навигационная панель в стиле Apple -->
+    <!-- Навигация -->
     <nav class="fixed top-0 w-full z-30 p-4 bg-transparent backdrop-filter backdrop-blur-sm">
         <div class="container mx-auto flex justify-between items-center text-white">
             <a href="#" class="text-xl font-bold">NestorOS</a>
             <div class="hidden md:flex gap-8 items-center">
-                <a href="#" class="hover:text-gray-300 transition-colors">Особенности</a>
-                <a href="#" class="hover:text-gray-300 transition-colors">Обзор</a>
-                <a href="#" class="hover:text-gray-300 transition-colors">Контакты</a>
-                <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-colors">Скачать</a>
+                <a href="#" class="hover:text-gray-300">Особенности</a>
+                <a href="#" class="hover:text-gray-300">Обзор</a>
+                <a href="#" class="hover:text-gray-300">Контакты</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg">Скачать</a>
             </div>
         </div>
     </nav>
 
-    <!-- Секция главного экрана, имитирующая скриншот -->
+    <!-- Главная секция -->
     <header class="hero-section flex items-center justify-center text-center text-white">
-        <!-- Добавляем оверлей с блюром, чтобы текст был читаемым -->
         <div class="hero-overlay"></div>
         <div class="relative z-10 p-8 fade-in">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">NestorOS</h1>
-            <p class="text-xl md:text-2xl mb-8 drop-shadow-lg max-w-2xl mx-auto">
-                Интуитивно понятная, мощная и элегантная. NestorOS создана для того, чтобы ваш рабочий процесс был максимально комфортным.
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">NestorOS</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                Интуитивно понятная, мощная и элегантная. NestorOS создана для комфортной работы в любой зимний день.
             </p>
         </div>
     </header>
 
-    <!-- Секция с функциями -->
+    <!-- Особенности -->
     <section class="py-20 text-center content-section">
         <h2 class="text-4xl font-bold mb-12 fade-in">Ключевые особенности NestorOS</h2>
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-            <!-- Карточка 1 -->
             <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.2s;">
                 <h3 class="text-2xl font-semibold mb-4">Интуитивный интерфейс</h3>
-                <p>
-                    NestorOS предлагает минималистичный и легко настраиваемый интерфейс, который делает работу с системой приятной и эффективной.
-                </p>
+                <p>Минималистичный интерфейс для эффективной работы и лёгкой настройки под себя.</p>
             </div>
-            <!-- Карточка 2 -->
             <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.4s;">
                 <h3 class="text-2xl font-semibold mb-4">Высокая производительность</h3>
-                <p>
-                    Оптимизированный код и современная архитектура обеспечивают мгновенный отклик и стабильную работу даже с ресурсоёмкими приложениями.
-                </p>
+                <p>Оптимизация и современная архитектура для стабильной работы даже с тяжелыми приложениями.</p>
             </div>
-            <!-- Карточка 3 -->
             <div class="card p-8 rounded-3xl shadow-xl transform hover:scale-105 transition-transform fade-in" style="animation-delay: 0.6s;">
                 <h3 class="text-2xl font-semibold mb-4">Надежность</h3>
-                <p>
-                    Встроенные средства защиты и регулярные обновления гарантируют, что ваши данные всегда будут в безопасности.
-                </p>
+                <p>Регулярные обновления и защита данных для полной уверенности в безопасности.</p>
             </div>
         </div>
     </section>
 
-    <!-- Секция с цитатой или дополнительной информацией -->
+    <!-- Цитата -->
     <section class="py-20 content-section">
         <div class="container mx-auto px-6 text-center">
             <blockquote class="text-3xl italic font-light max-w-3xl mx-auto mb-4 fade-in" style="animation-delay: 0.8s;">
-                "NestorOS — это не просто операционная система, это новый взгляд на взаимодействие с компьютером."
+                "NestorOS — это не просто ОС, это новый взгляд на взаимодействие с компьютером."
             </blockquote>
             <p class="text-xl font-semibold fade-in" style="animation-delay: 1s;">— Стивен Н., разработчик</p>
         </div>
